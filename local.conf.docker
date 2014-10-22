@@ -11,6 +11,7 @@ SCREEN_LOGDIR=/opt/stack/logs/screen
 SOLUM_INSTALL_CEDARISH=True
 SOLUM_INSTALL_DOCKERFILE=True
 GIT_BASE=https://git.openstack.org
+SOLUM_DRONE_URL=http://f4e976e84d9bb06108f6-ff40fde470ff7ecea31955ec7c479471.r49.cf2.rackcdn.com/drone.deb
 
 # DOCKER_REGISTRY_IMAGE=registry:0.6.9
 VIRT_DRIVER=docker
