@@ -167,6 +167,10 @@ Vagrant.configure("2") do |config|
     config.vm.synced_folder ENV['HEATCLIENT'], "/opt/stack/python-heatclient"
   end
 
+  if ENV['SOLUM_EXTRAS']
+    config.vm.synced_folder ENV['SOLUM_EXTRAS'], "/opt/extras"
+  end
+
   if RACKSPACE
     unless ENV['OS_USERNAME']
       puts "Set ENV['OS_USERNAME'] to use rackspace provisioner"
@@ -379,6 +383,13 @@ Vagrant.configure("2") do |config|
       devstack.vm.provision :shell, :inline => <<-SCRIPT
         cp /opt/stack/solum-gui/bridge/scripts/*.sh /home/vagrant
         su vagrant -c "/opt/stack/solum-gui/start-demo.sh"
+      SCRIPT
+    end
+
+    if ENV['SOLUM_EXTRAS']
+      devstack.vm.provision :shell, :inline => <<-SCRIPT
+        cd /opt/extras
+        ./extras.sh
       SCRIPT
     end
 
